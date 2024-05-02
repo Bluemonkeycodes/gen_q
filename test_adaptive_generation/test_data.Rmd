@@ -1,0 +1,50 @@
+---
+title: "adaptive_ca_test_data"
+author: "Kunlei He"
+date: "2024-05-01"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 3
+    toc_collapse: true
+    number_sections: true
+    df_print: paged
+    theme: lumen
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+rm(list=ls())
+
+```
+
+```{r}
+library(openxlsx)
+library(dplyr)
+```
+
+```{r}
+# generate a xlsx file with four columns: child_id, question_id, response, accuracy
+# child id: c(1783, 1784, 1785, 1786, 1787, 1844, 1845, 1846, 1847, 1848, 1910, 1911, 1912, 1913, 1914, 1915, 1976, 1977, 1978, 1979, 1980, 2016, 2017, 2018, 2019, 2064, 2065, 3001, 3002, 3003)
+# each child id should have 6 rows with question_id from 1-6
+# leave response and accuracy blank
+
+child_id <- c(1783, 1784, 1785, 1786, 1787, 1844, 1845, 1846, 1847, 1848, 1910, 1911, 1912, 1913, 1914, 1915, 1976, 1977, 1978, 1979, 1980, 2016, 2017, 2018, 2019, 2064, 2065, 3001, 3002, 3003)
+question_id <- rep(1:6, 5)
+response <- rep(NA, 30)
+accuracy <- rep(NA, 30)
+
+# make the data frame
+df <- data.frame(child_id, question_id, response, accuracy)
+
+# write it into xlsx
+write.xlsx(df, "test_data.xlsx")
+
+```
+
+```{r}
+
+
+```
+
